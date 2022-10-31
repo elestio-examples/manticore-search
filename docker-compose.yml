@@ -15,6 +15,7 @@ services:
       memlock:
         soft: -1
         hard: -1
+    environment:
+      - MCL=1
     volumes:
       - ./data:/var/lib/manticore
-      - ./manticore.conf:/etc/manticoresearch/manticore.conf
