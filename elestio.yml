@@ -14,7 +14,7 @@ environments:
     value: "latest"
   - key: ADMIN_PASSWORD
     value: "random_password"
-  - key: "DOMAIN"
+  - key: DOMAIN
     value: "[CI_CD_DOMAIN]"
 
 config:
