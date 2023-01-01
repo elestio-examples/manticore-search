@@ -14,11 +14,11 @@ Deploy Manticore Search server with CI/CD on Elestio
 
 ## create index
 
-        curl -sX POST https://root:[ADMIN_PASSWORD]@[DOMAIN]/cli -d "create table products(title text, price float) morphology='stem_en'"
+        curl -sX POST https://root:[ADMIN_PASSWORD]@[CI_CD_DOMAIN]/cli -d "create table products(title text, price float) morphology='stem_en'"
 
 ## Add documents
 
-    curl -sX POST https://root:[ADMIN_PASSWORD]@[DOMAIN]/insert  -d '
+    curl -sX POST https://root:[ADMIN_PASSWORD]@[CI_CD_DOMAIN]/insert  -d '
     {
         "index":"products",
         "doc":
@@ -28,7 +28,7 @@ Deploy Manticore Search server with CI/CD on Elestio
         }
     }'
 
-    curl -sX POST https://root:[ADMIN_PASSWORD]@[DOMAIN]/insert  -d '
+    curl -sX POST https://root:[ADMIN_PASSWORD]@[CI_CD_DOMAIN]/insert  -d '
     {
         "index":"products",
         "doc":
@@ -38,7 +38,7 @@ Deploy Manticore Search server with CI/CD on Elestio
         }
     }'
 
-    curl -sX POST https://root:[ADMIN_PASSWORD]@[DOMAIN]/insert  -d '
+    curl -sX POST https://root:[ADMIN_PASSWORD]@[CI_CD_DOMAIN]/insert  -d '
     {
         "index":"products",
         "doc":
@@ -50,7 +50,7 @@ Deploy Manticore Search server with CI/CD on Elestio
 
 ## search
 
-    curl -sX POST https://root:[ADMIN_PASSWORD]@[DOMAIN]/search  -d '
+    curl -sX POST https://root:[ADMIN_PASSWORD]@[CI_CD_DOMAIN]/search  -d '
     {
         "index": "products",
         "query": { "match": { "title": "remove hair" } },
@@ -62,7 +62,7 @@ Deploy Manticore Search server with CI/CD on Elestio
 
 ## update
 
-    curl -sX POST https://root:[ADMIN_PASSWORD]@[DOMAIN]/update  -d '
+    curl -sX POST https://root:[ADMIN_PASSWORD]@[CI_CD_DOMAIN]/update  -d '
     {
         "index": "products",
         "id": 1513686608316989452,
