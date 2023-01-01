@@ -10,6 +10,68 @@ Deploy Manticore Search server with CI/CD on Elestio
 
 # Once deployed ...
 
+# Curl examples
+
+## create index
+
+        curl -sX POST https://root:[ADMIN_PASSWORD]@[DOMAIN]/cli -d "create table products(title text, price float) morphology='stem_en'"
+
+## Add documents
+
+    curl -sX POST https://root:[ADMIN_PASSWORD]@[DOMAIN]/insert  -d '
+    {
+        "index":"products",
+        "doc":
+        {
+            "title" : "Crossbody Bag with Tassel",
+            "price" : 19.85
+        }
+    }'
+
+    curl -sX POST https://root:[ADMIN_PASSWORD]@[DOMAIN]/insert  -d '
+    {
+        "index":"products",
+        "doc":
+        {
+            "title" : "microfiber sheet set",
+            "price" : 19.99
+        }
+    }'
+
+    curl -sX POST https://root:[ADMIN_PASSWORD]@[DOMAIN]/insert  -d '
+    {
+        "index":"products",
+        "doc":
+        {
+            "title" : "Pet Hair Remover Glove",
+            "price" : 7.99
+        }
+    }'
+
+## search
+
+    curl -sX POST https://root:[ADMIN_PASSWORD]@[DOMAIN]/search  -d '
+    {
+        "index": "products",
+        "query": { "match": { "title": "remove hair" } },
+        "highlight":
+        {
+            "fields": ["title"]
+        }
+    }'
+
+## update
+
+    curl -sX POST https://root:[ADMIN_PASSWORD]@[DOMAIN]/update  -d '
+    {
+        "index": "products",
+        "id": 1513686608316989452,
+        "doc":
+        {
+            "price": 18.5
+        }
+    }'
+
 ## 1.
 
 Go to your favorite API platform.
