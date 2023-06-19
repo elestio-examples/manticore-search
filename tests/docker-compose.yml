@@ -1,8 +1,8 @@
 version: "3"
 
 services:
-  manticore-search:
-    image: elestio4test/manticore-search:latest
+  manticoresearch:
+    image: elestio4test/manticoresearch:latest
     restart: always
     ports:
       - "172.17.0.1:9306:9306"
