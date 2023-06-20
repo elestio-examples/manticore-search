@@ -10,11 +10,11 @@
 
 [Manticore Search](https://github.com/manticoresoftware/manticoresearch) is an easy to use open source fast database for search. Good alternative for Elasticsearch.
 
-<img src="../manticore-search.png" style='width: 100%;'/>
+<img src="https://github.com/elestio-examples/manticore-search/raw/main/manticore-search.png" style='width: 100%;'/>
 <br/>
 <br/>
 
-Deploy a <a target="_blank" href="https://elest.io/open-source/manticore-search">fully managed Manticore search</a> on <a target="_blank" href="https://elest.io/">elest.io</a> if you want automated backups, reverse proxy with SSL termination, firewall, automated OS & Software updates, and a team of Linux experts and open source enthusiasts to ensure your services are always safe, and functional.
+Deploy a <a target="_blank" href="https://elest.io/open-source/manticoresearch">fully managed Manticore search</a> on <a target="_blank" href="https://elest.io/">elest.io</a> if you want automated backups, reverse proxy with SSL termination, firewall, automated OS & Software updates, and a team of Linux experts and open source enthusiasts to ensure your services are always safe, and functional.
 
 [![deploy](https://github.com/elestio-examples/flatnotes/raw/main/deploy-on-elestio.png)](https://dash.elest.io/deploy?source=cicd&social=dockerCompose&url=https://github.com/elestio-examples/flatnotes)
 
@@ -40,24 +40,27 @@ Edit the .env file with your own values.
 
 Create data folders with correct permissions
 
-    mkdir -p ./data
+    mkdir -p -m 750 ./data
+    mkdir -p -m 750 ./manticore.conf
+
     chown -R 1000:1000 ./data
+    chown -R 1000:1000 ./manticore.conf
 
 Run the project with the following command
 
     docker-compose up -d
 
-You can access the Web UI at: `http://your-domain:28080`
+You can access the Web UI at: `http://your-domain:9308`
 
 ## Docker-compose
 
 Here are some example snippets to help you get started creating a container.
 
-    version: "3"
+    version: "3.3"
 
     services:
         manticore-search:
-            image: elestio4test/manticore-search:latest
+            image: elestio4test/manticoresearch:latest
             restart: always
             ports:
             - "172.17.0.1:9306:9306"
@@ -101,5 +104,7 @@ That's it! With these simple steps, you can easily backup and restore your data 
 # Links
 
 - <a target="_blank" href="https://github.com/manticoresoftware/manticoresearch">Manticore Search Github repository</a>
+
+- <a target="blank" href="https://manual.manticoresearch.com/">Manticore Search Documentation</a>
 
 - <a target="_blank" href="https://github.com/elestio-examples/manticore-search">Elestio/manticore-search Github repository</a>
