@@ -63,10 +63,10 @@ Here are some example snippets to help you get started creating a container.
             image: elestio4test/manticoresearch:latest
             restart: always
             ports:
-            - "172.17.0.1:9306:9306"
-            - "172.17.0.1:9308:9308"
+              - "172.17.0.1:9306:9306"
+              - "172.17.0.1:9308:9308"
             volumes:
-            - "./data:/var/lib/manticore"
+              - "./data:/var/lib/manticore"
 
 # Maintenance
 
