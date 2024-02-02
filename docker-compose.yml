@@ -16,6 +16,6 @@ services:
         soft: -1
         hard: -1
     environment:
-      - MCL=1
+      - EXTRA=1
     volumes:
       - ./data:/var/lib/manticore
